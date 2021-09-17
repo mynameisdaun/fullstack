@@ -26,5 +26,13 @@ module.exports = {
     const welcomeSection = homepage.section.app.section.welcome
 
     welcomeSection.expect.element('@cliPluginLinks').text.to.contain('e2e-nightwatch')
-  }
+  },
+
+  'login test': (browser) => {
+      browser
+          .url(process.env.VUE_DEV_SERVER_URL + 'login')
+          .waitForElementVisible('#app',5000)
+          .assert.containsText('h1', 'TaskAgile')
+          .end()
+    }
 }
